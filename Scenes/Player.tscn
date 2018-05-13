@@ -1,0 +1,63 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Scripts/KinematicBody2D.gd" type="Script" id=1]
+[ext_resource path="res://Art/Characters/Char01/Jump/character_jump_frame01.png" type="Texture" id=2]
+[ext_resource path="res://Art/Characters/Char01/Jump/character_jump_frame02.png" type="Texture" id=3]
+[ext_resource path="res://Art/Characters/Char01/Running/character_run_frame01.png" type="Texture" id=4]
+[ext_resource path="res://Art/Characters/Char01/Running/character_run_frame02.png" type="Texture" id=5]
+[ext_resource path="res://Art/Characters/Char01/Running/character_run_frame03.png" type="Texture" id=6]
+[ext_resource path="res://Art/Characters/Char01/Running/character_run_frame04.png" type="Texture" id=7]
+[ext_resource path="res://Art/Characters/Char01/Idle/character_idle_frame01.png" type="Texture" id=8]
+[ext_resource path="res://Art/Characters/Char01/Idle/character_idle_frame02.png" type="Texture" id=9]
+[ext_resource path="res://Art/Characters/Char01/Idle/character_idle_frame03.png" type="Texture" id=10]
+[ext_resource path="res://Art/Characters/Char01/Idle/character_idle_frame04.png" type="Texture" id=11]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 9.61246
+height = 20.0
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "Run",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 10.0
+} ]
+
+[node name="Player" type="KinematicBody2D" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+shape = SubResource( 1 )
+
+[node name="Sprite" type="AnimatedSprite" parent="." index="1"]
+
+position = Vector2( 2.44345, -0.329102 )
+frames = SubResource( 2 )
+animation = "Idle"
+frame = 3
+
+
